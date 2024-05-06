@@ -1,6 +1,8 @@
-const { resolve } = require("node:path");
+/** @format */
 
-const project = resolve(process.cwd(), "tsconfig.json");
+const { resolve } = require('node:path');
+
+const project = resolve(process.cwd(), 'tsconfig.json');
 
 /*
  * This is a custom ESLint configuration for use with
@@ -12,26 +14,36 @@ const project = resolve(process.cwd(), "tsconfig.json");
  */
 
 module.exports = {
-  extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
-  ].map(require.resolve),
-  parserOptions: {
-    project,
-  },
-  globals: {
-    React: true,
-    JSX: true,
-  },
-  settings: {
-    "import/resolver": {
-      typescript: {
+    extends: ['@vercel/style-guide/eslint/node', '@vercel/style-guide/eslint/typescript'].map(require.resolve),
+    parserOptions: {
         project,
-      },
-      node: {
-        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
-      },
     },
-  },
-  ignorePatterns: ["node_modules/", "dist/"],
+    globals: {
+        React: true,
+        JSX: true,
+    },
+    settings: {
+        'import/resolver': {
+            typescript: {
+                project,
+            },
+            node: {
+                extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
+            },
+        },
+    },
+    plugins: ['prettier'],
+    rules: {
+        'prettier/prettier': 'error',
+        'unicorn/filename-case': [
+            'error',
+            {
+                cases: {
+                    camelCase: true,
+                    pascalCase: true,
+                },
+            },
+        ],
+    },
+    ignorePatterns: ['node_modules/', 'dist/'],
 };

@@ -1,6 +1,8 @@
-const { resolve } = require("node:path");
+/** @format */
 
-const project = resolve(process.cwd(), "tsconfig.json");
+const { resolve } = require('node:path');
+
+const project = resolve(process.cwd(), 'tsconfig.json');
 
 /*
  * This is a custom ESLint configuration for use with
@@ -12,34 +14,47 @@ const project = resolve(process.cwd(), "tsconfig.json");
  */
 
 module.exports = {
-  extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/browser",
-    "@vercel/style-guide/eslint/react",
-    "@vercel/style-guide/eslint/next",
-    "eslint-config-turbo",
-  ].map(require.resolve),
-  parserOptions: {
-    project,
-  },
-  globals: {
-    React: true,
-    JSX: true,
-  },
-  settings: {
-    "import/resolver": {
-      typescript: {
+    extends: [
+        '@vercel/style-guide/eslint/node',
+        '@vercel/style-guide/eslint/typescript',
+        '@vercel/style-guide/eslint/browser',
+        '@vercel/style-guide/eslint/react',
+        '@vercel/style-guide/eslint/next',
+        'eslint-config-turbo',
+    ].map(require.resolve),
+    parserOptions: {
         project,
-      },
-      node: {
-        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
-      },
     },
-  },
-  ignorePatterns: ["node_modules/", "dist/"],
-  // add rules configurations here
-  rules: {
-    "import/no-default-export": "off",
-  },
+    globals: {
+        React: true,
+        JSX: true,
+    },
+    settings: {
+        'import/resolver': {
+            typescript: {
+                project,
+            },
+            node: {
+                extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
+            },
+        },
+    },
+    ignorePatterns: ['node_modules/', 'dist/'],
+    plugins: ['prettier'],
+    // add rules configurations here
+    rules: {
+        'import/no-default-export': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
+        'react/function-component-definition': 'off',
+        'prettier/prettier': 'error',
+        'unicorn/filename-case': [
+            'error',
+            {
+                cases: {
+                    camelCase: true,
+                    pascalCase: true,
+                },
+            },
+        ],
+    },
 };

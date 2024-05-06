@@ -1,14 +1,42 @@
-import type { Config } from "tailwindcss";
+/** @format */
+
+import type { Config } from 'tailwindcss';
 
 // We want each package to be responsible for its own content.
-export const config: Omit<Config, "content"> = {
-  theme: {
-    extend: {
-      backgroundImage: {
-        "glow-conic":
-          "conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)",
-      },
+export const config: Config = {
+    content: [],
+    theme: {
+        extend: {
+            fontFamily: {},
+            colors: {
+                'main-bg': '#161616',
+                secondary_bg: '#1b1b1b',
+                primary: '#F35034',
+                secondary: '#161616',
+                'secondary-border': '#292626',
+                'primary-text': '#FDFDFD',
+            },
+            container: {
+                center: true,
+                screens: {
+                    sm: '640px',
+                    md: '768px',
+                    lg: '956x',
+                    xl: '1156px',
+                    '2xl': '1356px',
+                },
+                padding: {
+                    DEFAULT: '1rem',
+                    sm: '2rem',
+                    lg: '4rem',
+                    xl: '5rem',
+                    '2xl': '6rem',
+                },
+            },
+        },
+        goldenRation: {
+            prefix: true,
+        },
     },
-  },
-  plugins: [],
+    plugins: [require('tailwindcss-golden-ratio')],
 };
