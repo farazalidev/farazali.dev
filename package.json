@@ -28,16 +28,13 @@
     },
     "lint-staged": {
         "./apps/**/*.{js,ts,jsx.tsx}": [
-            "eslint --cache --fix",
-            "prettier --write"
+            "eslint --cache --fix"
         ],
         "./packages/**/*.{js,ts,jsx,tsx}": [
-            "eslint --cache --fix",
-            "prettier --write"
+            "eslint --cache --fix"
         ],
         "*.js": [
-            "eslint --cache --fix",
-            "prettier --write"
+            "eslint --cache --fix"
         ],
         "*.{ts,tsx,md,json}": [
             "prettier --write"

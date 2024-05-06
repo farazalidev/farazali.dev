@@ -32,11 +32,11 @@ export const Hero: React.FC<HeroProps> = () => {
                     <Typography as='p' size='2xl'>
                         I'am Faraz Ali
                     </Typography>
-                    <Typography as='p' className='place-self-end md:place-self-start' intent='ghost' size='md'>
+                    <Typography as='p' intent='ghost' size='md'>
                         I speak the languages of the web. Fluently.
                     </Typography>
 
-                    <div className='flex place-items-center gap-3 place-self-end md:place-self-start'>
+                    <div className='flex place-items-center gap-3'>
                         <Button Icon={<AiOutlinePlus />} intent='primary'>
                             Hire Me
                         </Button>

@@ -47,6 +47,7 @@ module.exports = {
         '@typescript-eslint/no-empty-interface': 'off',
         'react/function-component-definition': 'off',
         'prettier/prettier': 'error',
+        '@next/next/no-html-link-for-pages': 'off',
         'unicorn/filename-case': [
             'error',
             {

@@ -1,5 +1,3 @@
-/** @format */
-
 import type { Config } from 'tailwindcss';
 
 // We want each package to be responsible for its own content.
@@ -22,13 +20,13 @@ export const config: Config = {
                     sm: '640px',
                     md: '768px',
                     lg: '956x',
-                    xl: '1156px',
-                    '2xl': '1356px',
+                    xl: '1200px',
+                    '2xl': '1370px',
                 },
                 padding: {
                     DEFAULT: '1rem',
                     sm: '2rem',
-                    lg: '4rem',
+                    lg: '2rem',
                     xl: '5rem',
                     '2xl': '6rem',
                 },
