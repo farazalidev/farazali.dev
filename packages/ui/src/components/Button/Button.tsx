@@ -7,7 +7,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement>, VariantProps<ty
     Icon?: ReactNode;
 }
 
-const buttonCVA = cva('flex text-primary-text text-xs md:text-lg py-1 text-nowrap', {
+const buttonCVA = cva('flex text-primary-text text-sm md:text-lg py-1 text-nowrap', {
     variants: {
         intent: {
             primary: 'bg-primary border-gray-100',
@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({ children, intent = 'primary', si
         <button
             className={cn(
                 'flex border-[3px] rounded-md cursor-pointer',
-                intent === 'primary' ? 'border-gray-100' : intent === 'secondary' ? 'border-secondary-border ' : '',
+                intent === 'primary' ? 'border-secondary-border' : intent === 'secondary' ? 'border-secondary-border ' : '',
             )}
             type='button'
             {...props}
@@ -40,7 +40,7 @@ export const Button: React.FC<ButtonProps> = ({ children, intent = 'primary', si
                         className={cn(
                             buttonCVA({ intent, size }),
                             'border-l-[3px] px-1 rounded-r-sm flex justify-center place-items-center',
-                            intent === 'primary' ? 'border-gray-100' : 'border-secondary-border',
+                            intent === 'primary' ? 'border-secondary-border' : 'border-secondary-border',
                         )}
                     >
                         {Icon}

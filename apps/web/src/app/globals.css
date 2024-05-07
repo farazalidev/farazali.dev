@@ -4,7 +4,7 @@
 
 .common_section {
     @apply border-secondary-border border-[3px] py-3 px-4 md:px-6;
-    @apply backdrop-blur-2xl backdrop-filter bg-secondary_bg overflow-hidden;
+    @apply bg-secondary_bg overflow-hidden;
 
 }
 
