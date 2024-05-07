@@ -6,3 +6,6 @@ export * from './Project/Project';
 export * from './Footer/Footer';
 export * from './Skills/Skills';
 export * from './RecentPosts/RecentPosts';
+export * from './Blog/SideBar';
+export * from './Blog/RecentPosts.tsx';
+export * from './Blog/RightSideBar.tsx';

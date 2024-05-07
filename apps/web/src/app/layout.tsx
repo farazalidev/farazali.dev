@@ -3,6 +3,7 @@ import '@repo/ui/styles.css';
 import type { Metadata } from 'next';
 import LocalFont from 'next/font/local';
 import { cn } from '@repo/ui/utils';
+import { Footer, Header } from '../components';
 
 const Poppins = LocalFont({
     src: [
@@ -27,7 +28,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
     return (
         <html lang='en'>
-            <body className={cn(Poppins.className, 'bg-main-bg relative container mx-auto my-3 md:my-5')}>{children}</body>
+            <body className={cn(Poppins.className, 'bg-main-bg container mx-auto my-3 md:my-5 flex flex-col')}>
+                <Header />
+                {children}
+                <Footer />
+            </body>
         </html>
     );
 }

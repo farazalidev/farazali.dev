@@ -11,7 +11,7 @@ export const Header: React.FC<HeaderProps> = () => {
     return (
         <div
             className={cn([
-                'flex place-items-center justify-between common_section min-h-[45px] md:min-h-[65px]',
+                'flex place-items-center justify-between common_section min-h-[45px] md:min-h-[65px] mb-4',
                 'transition-all duration-300 rounded-full',
                 'backdrop-blur-2xl backdrop-filter',
                 'bg-secondary_bg',

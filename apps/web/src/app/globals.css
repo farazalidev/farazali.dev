@@ -11,3 +11,18 @@
 .h-button-calc-100 {
     height: calc(100% + 14px);
   }
+
+
+  .vertical{
+    writing-mode:tb-rl;
+    -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform:rotate(0deg);
+    transform: rotate(0deg);
+    white-space:nowrap;
+    display:block;
+    bottom:0;
+    width:20px;
+    height:20px;
+}

@@ -6,7 +6,7 @@ import { postsData, type Post } from './dummyPosts.data';
 
 interface RecentPostsProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const RecentPosts: React.FC<RecentPostsProps> = ({ className, ...props }) => {
+export const MainPageRecentPosts: React.FC<RecentPostsProps> = ({ className, ...props }) => {
     return (
         <div className={cn('common_section rounded-xl text-primary-text', className)} {...props}>
             <Status>Recent Posts</Status>
