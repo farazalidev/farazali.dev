@@ -1,9 +1,5 @@
-import type { HTMLAttributes } from 'react';
 import React from 'react';
 
-interface LayoutProps extends HTMLAttributes<HTMLDivElement> {}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+export default function Layout({ children }: { children: React.ReactNode }): JSX.Element {
     return <div className='w-full'>{children}</div>;
-};
-export default Layout;
+}

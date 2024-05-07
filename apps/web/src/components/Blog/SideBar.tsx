@@ -8,7 +8,7 @@ interface SideBarProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const SideBar: React.FC<SideBarProps> = ({ className }) => {
     return (
-        <div
+        <aside
             className={cn(
                 'common_section rounded-full text-primary-text min-w-[70px] w-full max-w-[100px] place-items-center justify-evenly min-h-[500px] max-h-fit h-fit text-center flex flex-col',
                 className,
@@ -29,6 +29,6 @@ export const SideBar: React.FC<SideBarProps> = ({ className }) => {
             <span>
                 <FiPlusCircle className='text-primary' size={25} />
             </span>
-        </div>
+        </aside>
     );
 };

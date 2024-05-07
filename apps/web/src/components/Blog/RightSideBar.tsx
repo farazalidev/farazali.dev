@@ -6,7 +6,8 @@ import { FaEye } from 'react-icons/fa';
 import { LuTrendingUp } from 'react-icons/lu';
 import Image from 'next/image';
 import { postsData, type Post } from '../RecentPosts/dummyPosts.data';
-import { PostTag, tagsData } from './Tags.data';
+import type { PostTag } from './Tags.data';
+import { tagsData } from './Tags.data';
 
 interface RightSideBarProps extends HTMLAttributes<HTMLDivElement> {}
 
