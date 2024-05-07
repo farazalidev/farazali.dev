@@ -26,7 +26,7 @@ interface SkillIconProps extends HTMLAttributes<HTMLDivElement> {
 export const SkillIcon: React.FC<SkillIconProps> = ({ skillData, className, ...props }) => {
     return (
         <div className={cn('relative h-[40px] w-[40px] md:h-[54px] md:w-[45px]', className)} {...props}>
-            <Image alt={skillData.name} fill objectFit='contain' src={skillData.path} title={skillData.name} />
+            <Image alt={skillData.name} fill loading='lazy' objectFit='contain' src={skillData.path} title={skillData.name} />
         </div>
     );
 };

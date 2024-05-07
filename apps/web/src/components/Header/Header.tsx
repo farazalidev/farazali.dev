@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = () => {
             ])}
         >
             <div className='flex justify-center place-items-center gap-4'>
-                <Image alt='logo' height={45} src='farazalidev_logo.svg' width={45} />
+                <Image alt='logo' height={45} loading='lazy' src='farazalidev_logo.svg' width={45} />
                 <h1 className='text-primary text-xl md:text-2xl font-bold'>Faraz Ali</h1>
             </div>
 
