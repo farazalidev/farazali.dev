@@ -10,9 +10,9 @@ const MainPage: React.FC<MainPageProps> = () => {
                 <Header />
                 <Hero />
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4'>
-                    <Skills className='xl:col-span-2' />
+                    <Skills className='md:col-span-2' />
+                    <RecentPosts className='md:col-span-2 xl:col-span-1 xl:row-span-2' />
                     <GitHubReps />
-                    <RecentPosts />
                     <Projects />
                 </div>
                 <Footer />

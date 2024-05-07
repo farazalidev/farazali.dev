@@ -14,7 +14,7 @@ interface ProjectProps {
 
 export const Project: React.FC<ProjectProps> = ({ link, name, thumbnail, type, index }) => {
     return (
-        <div className='common_section rounded-xl h-fit'>
+        <div className='common_section rounded-xl h-fit min-h-[350px]'>
             <Status>Project #{index + 1}</Status>
             <div className='h-full flex flex-col gap-5'>
                 <div className='flex justify-between place-items-center'>

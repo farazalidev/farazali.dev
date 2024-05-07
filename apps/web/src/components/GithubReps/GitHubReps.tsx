@@ -44,8 +44,8 @@ export const GitHubReps: React.FC<GitHubRepsProps> = () => {
     return (
         <div className='common_section min-h-fit rounded-xl'>
             <Status>Recent Github repos</Status>
-            <div className='flex flex-col gap-3 justify-center'>
-                {fetchState.data.slice(0, 3).map((repo) => {
+            <div className='flex flex-col gap-3 justify-center mt-4'>
+                {fetchState.data.slice(0, 4).map((repo) => {
                     return <Repo createdAt={repo?.created_at} key={repo.name} name={repo?.name} starsCount={repo?.stargazers_count} />;
                 })}
             </div>

@@ -8,7 +8,7 @@ interface SkillsProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Skills: React.FC<SkillsProps> = ({ className, ...props }) => {
     return (
-        <div className={cn('common_section rounded-xl text-primary-text', className)} {...props}>
+        <div className={cn('common_section rounded-xl text-primary-text min-h-[200px]', className)} {...props}>
             <Status>Skills</Status>
             <div className='flex w-full justify-center xl:justify-between gap-3 xl:gap-0 flex-wrap h-[70%] mt-4'>
                 {skillsData.map((skill, i) => {
