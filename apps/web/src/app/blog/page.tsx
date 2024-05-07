@@ -15,7 +15,12 @@ const BlogPage: React.FC<BlogPageProps> = () => {
                 className={cn('md:col-span-2 lg:col-span-2 xl:col-span-1 hidden md:flex', collide ? 'md:sticky md:top-0 md:left-0' : '')}
             />
             <RecentPosts className='col-span-12 md:col-span-10 lg:col-span-10 xl:col-span-7' />
-            <RightSideBar className={cn('hidden xl:flex xl:col-span-4 max-h-fit h-fit', collide ? 'xl:sticky xl:top-0 xl:right-0' : '')} />
+            <RightSideBar
+                className={cn(
+                    'col-span-12 md:flex md:col-start-3 md:col-end-13 xl:col-span-4 max-h-fit h-fit',
+                    collide ? 'xl:sticky xl:top-0 xl:right-0' : '',
+                )}
+            />
         </div>
     );
 };

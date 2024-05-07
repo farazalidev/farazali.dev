@@ -13,38 +13,40 @@ interface RightSideBarProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const RightSideBar: React.FC<RightSideBarProps> = ({ className, ...props }) => {
     return (
-        <aside className={cn('rounded-xl h-full flex flex-col gap-2', className)} {...props}>
-            <div className='common_section rounded-t-xl h-[33.3%]'>
-                <Status>About Me</Status>
-                <div className='flex place-items-center justify-center flex-col'>
-                    <div className='flex flex-col gap-2'>
-                        <Image alt='profile' className='rounded-full' height={100} src='/profile.jpg' width={100} />
-                        <Typography as='p' intent='ghost-xl' size='sm'>
-                            Full Stack Dev
+        <aside className={cn('rounded-xl', className)} {...props}>
+            <div className='h-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-2'>
+                <div className='common_section rounded-t-xl h-full'>
+                    <Status>About Me</Status>
+                    <div className='flex place-items-center justify-center lg:flex-col'>
+                        <div className='flex flex-col gap-2 text-nowrap'>
+                            <Image alt='profile' className='rounded-full' height={100} src='/profile.jpg' width={100} />
+                            <Typography as='p' intent='ghost-xl' size='sm'>
+                                Full Stack Dev
+                            </Typography>
+                        </div>
+                        <Typography as='p' className='mt-3 text-balance text-center' intent='ghost' size='sm'>
+                            Full Stack Developer proficient in crafting seamless web applications from design to deployment. Skilled in
+                            React.js, Node.js, and dedicated to problem-solving.
                         </Typography>
                     </div>
-                    <Typography as='p' className='mt-3 text-balance' intent='ghost' size='sm'>
-                        Full Stack Developer proficient in crafting seamless web applications from design to deployment. Skilled in
-                        React.js, Node.js, and dedicated to problem-solving.
-                    </Typography>
                 </div>
-            </div>
 
-            <div className='common_section h-[33.3%]'>
-                <Status>Trending Posts</Status>
-                <div className='gap-4 h-full flex flex-col mt-3'>
-                    {postsData.slice(0, 2).map((post) => {
-                        return <TrendingPostCard key={post.title} post={post} />;
-                    })}
+                <div className='common_section h-full'>
+                    <Status>Trending Posts</Status>
+                    <div className='gap-4 h-full flex flex-col mt-3'>
+                        {postsData.slice(0, 2).map((post) => {
+                            return <TrendingPostCard key={post.title} post={post} />;
+                        })}
+                    </div>
                 </div>
-            </div>
 
-            <div className='common_section rounded-b-xl h-[33.3%]'>
-                <Status>Tags</Status>
-                <div className='flex flex-wrap gap-3 mt-3'>
-                    {tagsData.slice(0, 15).map((tag) => {
-                        return <Tag key={tag.topic} tag={tag} />;
-                    })}
+                <div className='common_section rounded-b-xl h-full'>
+                    <Status>Tags</Status>
+                    <div className='flex flex-wrap gap-3 mt-3'>
+                        {tagsData.slice(0, 15).map((tag) => {
+                            return <Tag key={tag.topic} tag={tag} />;
+                        })}
+                    </div>
                 </div>
             </div>
         </aside>

@@ -16,13 +16,6 @@ export const config: Config = {
             },
             container: {
                 center: true,
-                screens: {
-                    sm: '640px',
-                    md: '768px',
-                    lg: '956x',
-                    xl: '1200px',
-                    '2xl': '1370px',
-                },
                 padding: {
                     DEFAULT: '1rem',
                     sm: '2rem',
