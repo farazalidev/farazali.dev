@@ -1,8 +1,10 @@
+/* eslint-disable react/self-closing-comp -- added google analytics scripts*/
 import './globals.css';
 import '@repo/ui/styles.css';
 import type { Metadata } from 'next';
 import LocalFont from 'next/font/local';
 import { cn } from '@repo/ui/utils';
+import Script from 'next/script';
 import { Footer, Header } from '../components';
 
 const Poppins = LocalFont({
@@ -28,6 +30,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
     return (
         <html lang='en'>
+            <head>
+                <Script async src='https://www.googletagmanager.com/gtag/js?id=G-NEJDNP6XCW'></Script>
+                <Script id=''>
+                    {` window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-NEJDNP6XCW');`}
+                </Script>
+            </head>
             <body className={cn(Poppins.className, 'bg-main-bg container mx-auto my-3 md:my-5 flex flex-col')}>
                 <Header />
                 {children}
