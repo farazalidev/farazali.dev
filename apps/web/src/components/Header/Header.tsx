@@ -1,15 +1,15 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import { cn } from '@repo/ui/utils';
 import { IoIosMenu } from 'react-icons/io';
+import { NavLink } from '../Misc/NavLink';
 import { headersData } from './headers.data';
 
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = () => {
     return (
-        <div
+        <header
             className={cn([
                 'flex place-items-center justify-between common_section min-h-[45px] md:min-h-[65px] mb-4',
                 'transition-all duration-300 rounded-full',
@@ -27,13 +27,9 @@ export const Header: React.FC<HeaderProps> = () => {
                 <div className='hidden md:block'>
                     {headersData.map((header) => {
                         return (
-                            <Link
-                                className='text-primary-text hover:text-primary transition-colors duration-200 mr-3'
-                                href={header.location}
-                                key={header.label}
-                            >
+                            <NavLink href={header.location} key={header.label}>
                                 {header.label}
-                            </Link>
+                            </NavLink>
                         );
                     })}
                 </div>
@@ -44,6 +40,6 @@ export const Header: React.FC<HeaderProps> = () => {
                     <IoIosMenu className='text-primary-text' size={32} />
                 </div>
             </nav>
-        </div>
+        </header>
     );
 };

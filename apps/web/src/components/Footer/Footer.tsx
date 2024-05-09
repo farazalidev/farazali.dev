@@ -8,7 +8,7 @@ interface FooterProps {}
 
 export const Footer: React.FC<FooterProps> = () => {
     return (
-        <div className='text-center'>
+        <footer className='text-center'>
             <div className='common_section rounded-full h-fit text-primary-text flex justify-between mt-4'>
                 <Image alt='logo' height={35} loading='lazy' src='farazalidev_logo.svg' width={35} />
                 <div className='flex place-items-center justify-between gap-2'>
@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = () => {
                     Design inspiration by @Zainab Nisa
                 </Link>
             </Typography>
-        </div>
+        </footer>
     );
 };
 

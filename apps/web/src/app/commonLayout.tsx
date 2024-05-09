@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import LocalFont from 'next/font/local';
 import { cn } from '@repo/ui/utils';
 import Script from 'next/script';
-import { Footer, Header } from '../components';
+import type { HTMLAttributes } from 'react';
 
 const Poppins = LocalFont({
     src: [
@@ -27,7 +27,9 @@ export const metadata: Metadata = {
     description: 'farazali portfolio',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
+interface CommonLayoutProps extends HTMLAttributes<HTMLBodyElement> {}
+
+export default function CommonLayout({ children, className, ...props }: CommonLayoutProps): JSX.Element {
     return (
         <html lang='en'>
             <head>
@@ -39,10 +41,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
                 gtag('config', 'G-NEJDNP6XCW');`}
                 </Script>
             </head>
-            <body className={cn(Poppins.className, 'bg-main-bg container mx-auto my-3 md:my-5 flex flex-col')}>
-                <Header />
+            <body className={cn(Poppins.className, 'bg-main-bg container mx-auto my-3 md:my-5 flex flex-col', className)} {...props}>
                 {children}
-                <Footer />
             </body>
         </html>
     );
