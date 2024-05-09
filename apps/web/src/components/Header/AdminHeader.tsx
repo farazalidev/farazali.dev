@@ -9,13 +9,15 @@ import { FaBell, FaSearch } from 'react-icons/fa';
 interface AdminHeaderProps extends HTMLAttributes<HTMLHeadElement> {}
 
 export const AdminHeader: React.FC<AdminHeaderProps> = ({ className, ...props }) => {
-    const [searchValue, setSearchValue] = useState();
+    const [searchValue, setSearchValue] = useState<string>();
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
         e.preventDefault();
     };
 
-    const handleSearchChange = (e: ChangeEvent<HTMLInputElement>): void => {};
+    const handleSearchChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        setSearchValue(e.target.value);
+    };
 
     return (
         <header
