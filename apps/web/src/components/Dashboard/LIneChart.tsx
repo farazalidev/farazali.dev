@@ -46,27 +46,27 @@ const data = [
         amt: 2100,
     },
 ];
-export const Chart = () => {
+export const Chart = (): React.JSX.Element => {
     return (
         // <ResponsiveContainer width='100%' height='100%'>
         <LineChart
-            width={500}
-            height={300}
             data={data}
+            height={300}
             margin={{
                 top: 5,
                 right: 30,
                 left: 20,
                 bottom: 5,
             }}
+            width={500}
         >
             <CartesianGrid strokeDasharray='3 3' />
             <XAxis dataKey='name' />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type='monotone' dataKey='pv' stroke='#8884d8' activeDot={{ r: 8 }} />
-            <Line type='monotone' dataKey='uv' stroke='#82ca9d' />
+            <Line activeDot={{ r: 8 }} dataKey='pv' stroke='#8884d8' type='monotone' />
+            <Line dataKey='uv' stroke='#82ca9d' type='monotone' />
         </LineChart>
         // </ResponsiveContainer>
     );

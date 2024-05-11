@@ -42,6 +42,7 @@ export const UsersDevicePieChart = () => {
                 outerRadius={150}
             >
                 {data.map((_entry, index) => (
+                    // eslint-disable-next-line react/no-array-index-key -- required
                     <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
                 ))}
             </Pie>

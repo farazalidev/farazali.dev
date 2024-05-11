@@ -1,9 +1,8 @@
 'use client';
 import type { ColumnDef } from '@tanstack/react-table';
-import type { Post } from '@types';
 import Link from 'next/link';
 import { BiEdit, BiTrash } from 'react-icons/bi';
-import { FiDelete } from 'react-icons/fi';
+import type { Post } from '@types';
 
 export const PostColumns: ColumnDef<Post>[] = [
     {

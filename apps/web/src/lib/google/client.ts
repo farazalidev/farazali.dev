@@ -13,5 +13,4 @@ export const analyticsDataClient = new BetaAnalyticsDataClient({
     },
 });
 
-// eslint-disable-next-line turbo/no-undeclared-env-vars -- u
 export const GTAG = process.env.GTAG || '';

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key -- want to use index as key*/
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
