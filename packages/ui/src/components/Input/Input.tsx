@@ -50,19 +50,21 @@ const InputVariants = cva('rounded-full text-primary-text ', {
 
 export const Input: React.FC<InputProps> = ({ className, intent = 'normal', dimensions = 'md', id, ...props }) => {
     return (
-        <form className={cn('relative bg-white h-fit w-fit rounded-full flex place-items-center')}>
+        <form className={cn('relative bg-secondary-border h-fit w-fit rounded-full flex place-items-center')}>
             {props.isLabel ? <label htmlFor={id}>{props.label}</label> : null}
             <input
                 className={cn(
                     InputVariants({ intent, dimensions, className }),
-                    'outline-secondary-border w-[calc(100%-40px)] h-full bg-secondary_bg border-[2px] border-white',
+                    'outline-secondary-border w-full h-full bg-secondary_bg border-[2px] border-primary',
+                    // eslint-disable-next-line no-nested-ternary -- i want to use it
+                    props.inputType === 'withIcon' ? (props.iconsPosition === 'left' ? 'pl-12' : 'pr-12') : '',
                 )}
                 id={id}
                 {...props}
             />
             {props.inputType === 'withIcon' ? (
                 <button
-                    className={cn('absolute z-10 text-black', props.iconsPosition === 'left' ? 'left-4' : 'right-4')}
+                    className={cn('absolute z-10 text-primary', props.iconsPosition === 'left' ? 'left-4' : 'right-4')}
                     onClick={props.onIconClick}
                     type='submit'
                 >
