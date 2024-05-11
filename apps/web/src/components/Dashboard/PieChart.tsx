@@ -41,7 +41,7 @@ export const UsersDevicePieChart = () => {
                 labelLine={false}
                 outerRadius={150}
             >
-                {data.map((entry, index) => (
+                {data.map((_entry, index) => (
                     <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
                 ))}
             </Pie>
