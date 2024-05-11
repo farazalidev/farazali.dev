@@ -15,21 +15,6 @@ export const RecentPosts: React.FC<BlogPostsProps> = ({ className }) => {
                 {postsData.map((post) => {
                     return <RecentPostCard key={post.title} post={post} />;
                 })}
-                {postsData.map((post) => {
-                    return <RecentPostCard key={post.title} post={post} />;
-                })}
-                {postsData.map((post) => {
-                    return <RecentPostCard key={post.title} post={post} />;
-                })}
-                {postsData.map((post) => {
-                    return <RecentPostCard key={post.title} post={post} />;
-                })}
-                {postsData.map((post) => {
-                    return <RecentPostCard key={post.title} post={post} />;
-                })}
-                {postsData.map((post) => {
-                    return <RecentPostCard key={post.title} post={post} />;
-                })}
             </div>
         </div>
     );
@@ -39,9 +24,9 @@ interface RecentPostCardProps extends HTMLAttributes<HTMLDivElement> {
     post: Post;
 }
 
-export const RecentPostCard: React.FC<RecentPostCardProps> = ({ post, ...props }) => {
+export const RecentPostCard: React.FC<RecentPostCardProps> = ({ post, className, ...props }) => {
     return (
-        <article className='flex gap-3 justify-center' {...props}>
+        <article className={cn('flex gap-3 justify-center overflow-hidden', className)} {...props}>
             <div className='flex flex-col gap-1 place-items-center'>
                 <Typography as='span' className='text-white uppercase' size='lg' weight='bold'>
                     27
@@ -49,7 +34,7 @@ export const RecentPostCard: React.FC<RecentPostCardProps> = ({ post, ...props }
                 <Typography as='span' className='text-white uppercase' size='lg' weight='bold'>
                     May
                 </Typography>
-                <Typography as='span' className='vertical h-full' size='sm'>
+                <Typography as='span' className='vertical' size='sm'>
                     @faraz
                 </Typography>
             </div>
