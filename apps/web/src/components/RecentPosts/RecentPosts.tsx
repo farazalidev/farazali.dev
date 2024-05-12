@@ -2,6 +2,9 @@ import { Status, Typography } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
+// import groq from 'groq';
+// import { client } from '../../lib/sanity/client';
+// import type { SanityRecentPosts } from '../../lib/sanity/interface';
 import { postsData, type Post } from './dummyPosts.data';
 
 interface RecentPostsProps extends HTMLAttributes<HTMLDivElement> {}
@@ -24,6 +27,15 @@ interface PostCardProps {
 }
 
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
+    // const fetchRecentPosts = async (): Promise<SanityRecentPosts[]> => {
+    //     const data: SanityRecentPosts[] = await client.fetch(groq`*[_type=="post"] | order(_createdAt asc){
+    //                     title,
+    //                     _createdAt,
+    //                     author,
+    //                     categories }`);
+    //     return data;
+    // };
+
     return (
         <section className='flex flex-col gap-2 min-h-fit'>
             <Typography as='h2' className='line-clamp-1 text-primary' size='lg'>

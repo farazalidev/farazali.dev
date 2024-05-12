@@ -5,6 +5,7 @@ import { FaPlusCircle, FaSearch } from 'react-icons/fa';
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
 import { MdFirstPage, MdLastPage } from 'react-icons/md';
 import type { Table } from '@tanstack/react-table';
+import Link from 'next/link';
 import type { Post } from '../../@types';
 
 interface PostsDataHeaderProps extends HTMLAttributes<HTMLDivElement> {
@@ -16,11 +17,11 @@ interface PostsDataHeaderProps extends HTMLAttributes<HTMLDivElement> {
 export const PostsDataHeader: React.FC<PostsDataHeaderProps> = ({ table, onChange, value, ...props }) => {
     return (
         <div className='common_section w-full rounded-xl flex justify-between place-items-center' {...props}>
-            <div className='flex place-items-center' title='create new post'>
+            <Link className='flex place-items-center' href='/dashboard/posts/create' title='create new post'>
                 <button className='text-primary' type='button'>
                     <FaPlusCircle size={25} />
                 </button>
-            </div>
+            </Link>
             <Input
                 Icon={<FaSearch size={18} />}
                 iconsPosition='right'
