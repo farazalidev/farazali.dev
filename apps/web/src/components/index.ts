@@ -11,7 +11,4 @@ export * from './Blog/RecentPosts.tsx';
 export * from './Blog/RightSideBar.tsx';
 export * from './Misc/NavLink.tsx';
 export * from './Header/AdminHeader.tsx';
-export * from './Dashboard/DashboardSidebar.tsx';
-export * from './Dashboard/AnalyticsCard.tsx';
-export * from './Dashboard/PieChart.tsx';
-export * from './Dashboard/LIneChart.tsx';
+export * from './Blog/Post.tsx';

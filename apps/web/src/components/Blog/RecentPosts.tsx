@@ -1,52 +1,43 @@
-import { Status, Typography } from '@repo/ui/components';
+import { Status } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
-import type { Post } from '../RecentPosts/dummyPosts.data';
-import { postsData } from '../RecentPosts/dummyPosts.data';
+import groq from 'groq';
+import type { SanityRecentPost } from '../../lib/sanity/interface';
+import { client } from '../../lib/sanity/client';
+import { RecentPostCard } from './RecentPostCard';
 
 interface BlogPostsProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const RecentPosts: React.FC<BlogPostsProps> = ({ className }) => {
+const fetchRecentPosts = async (): Promise<SanityRecentPost[]> => {
+    const data: SanityRecentPost[] | undefined = await client.fetch(
+        groq`*[_type=="post"][0...3] | order(_createdAt desc) {
+                title,
+                summary,
+                _createdAt,
+                slug {
+                current
+                    },
+                author -> { 
+                name
+                    },
+                categories[]->{title}
+}`,
+    );
+    return data || [];
+};
+
+export const RecentPosts: React.FC<BlogPostsProps> = async ({ className }) => {
+    const result = await fetchRecentPosts();
+
     return (
         <div className={cn('common_section rounded-xl w-full h-full py-2', className)}>
             <Status>Recent Posts</Status>
             <div className='flex flex-col gap-7'>
-                {postsData.map((post) => {
+                {result.map((post) => {
                     return <RecentPostCard key={post.title} post={post} />;
                 })}
             </div>
         </div>
-    );
-};
-
-interface RecentPostCardProps extends HTMLAttributes<HTMLDivElement> {
-    post: Post;
-}
-
-export const RecentPostCard: React.FC<RecentPostCardProps> = ({ post, className, ...props }) => {
-    return (
-        <article className={cn('flex gap-3 justify-center overflow-hidden', className)} {...props}>
-            <div className='flex flex-col gap-1 place-items-center'>
-                <Typography as='span' className='text-white uppercase' size='lg' weight='bold'>
-                    27
-                </Typography>
-                <Typography as='span' className='text-white uppercase' size='lg' weight='bold'>
-                    May
-                </Typography>
-                <Typography as='span' className='vertical' size='sm'>
-                    @faraz
-                </Typography>
-            </div>
-
-            <div className='flex flex-col gap-2'>
-                <Typography as='h1' className='text-primary line-clamp-1' size='xl' weight='extra-bold'>
-                    {post.title}
-                </Typography>
-                <Typography as='p' className='line-clamp-4' intent='ghost'>
-                    {post.body}
-                </Typography>
-            </div>
-        </article>
     );
 };

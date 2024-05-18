@@ -3,7 +3,7 @@
 import type { Config } from 'tailwindcss';
 import { config as sharedConfig } from '@repo/tailwind-config';
 
-const config: Pick<Config, 'content' | 'presets'> = {
+const config: Config = {
     content: [
         './app/**/*.{js,ts,jsx,tsx,mdx}',
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -13,6 +13,7 @@ const config: Pick<Config, 'content' | 'presets'> = {
         './src/**/*.{js,ts,jsx,tsx,mdx}',
     ],
     presets: [sharedConfig],
+    plugins: [require('@tailwindcss/typography')],
 };
 
 export default config;

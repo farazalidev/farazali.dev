@@ -14,13 +14,6 @@ type TypographyProps = {
 
 const TypographyVariants = cva('text-primary-text', {
     variants: {
-        size: {
-            sm: 'text-sm',
-            md: 'text-[16px] leading-[1.25rem]',
-            lg: 'text-lg',
-            xl: 'text-xl',
-            '2xl': 'text-2xl',
-        },
         weight: {
             light: 'font-light',
             'extra-light': 'font-extralight',
@@ -35,12 +28,11 @@ const TypographyVariants = cva('text-primary-text', {
         },
     },
     defaultVariants: {
-        size: 'md',
         weight: 'regular',
         intent: 'normal',
     },
 });
 
-export const Typography: React.FC<TypographyProps> = ({ children, as: Tag = 'span', className, italic, size, intent, weight }) => {
-    return <Tag className={cn(TypographyVariants({ size, intent, weight, className }), italic ? 'italic' : '')}>{children}</Tag>;
+export const Typography: React.FC<TypographyProps> = ({ children, as: Tag = 'span', className, italic, intent, weight }) => {
+    return <Tag className={cn(TypographyVariants({ intent, weight, className }), italic ? 'italic' : '')}>{children}</Tag>;
 };

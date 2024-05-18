@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import React from 'react';
 import { cn } from '@repo/ui/utils';
@@ -18,7 +19,7 @@ export const Header: React.FC<HeaderProps> = () => {
             ])}
         >
             <div className='flex justify-center place-items-center gap-4'>
-                <Image alt='logo' height={45} loading='lazy' src='farazalidev_logo.svg' width={45} />
+                <Image alt='logo' height={45} loading='lazy' src='/farazalidev_logo.svg' width={45} />
                 <h1 className='text-primary text-xl md:text-2xl font-bold'>Faraz Ali</h1>
             </div>
 

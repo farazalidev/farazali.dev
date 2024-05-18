@@ -63,15 +63,15 @@ export const Repo: React.FC<RepoProps> = ({ name, createdAt, starsCount }) => {
     return (
         <div className='flex justify-between place-items-center px-4'>
             <div className='flex flex-col'>
-                <Typography as='p' className='hover:text-primary' size='lg'>
+                <Typography as='p' className='hover:text-primary'>
                     {name}
                 </Typography>
-                <Typography as='p' intent='ghost' size='sm'>
+                <Typography as='p' intent='ghost'>
                     {new Date(createdAt).toISOString().substring(0, 10)}
                 </Typography>
             </div>
             <div className='flex gap-2 place-items-center'>
-                <Typography as='p' intent='ghost' size='sm'>
+                <Typography as='p' intent='ghost'>
                     {starsCount}
                 </Typography>
                 <FaStar className='text-primary-text' />

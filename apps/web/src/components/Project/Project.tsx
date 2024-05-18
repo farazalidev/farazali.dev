@@ -19,10 +19,10 @@ export const Project: React.FC<ProjectProps> = ({ link, name, thumbnail, type, i
             <div className='h-full flex flex-col gap-5'>
                 <div className='flex justify-between place-items-center'>
                     <Link href={link}>
-                        <Typography as='p' className='hover:text-primary' size='lg'>
+                        <Typography as='p' className='hover:text-primary'>
                             {name}
                         </Typography>
-                        <Typography as='p' intent='ghost' size='sm'>
+                        <Typography as='p' intent='ghost'>
                             {type}
                         </Typography>
                     </Link>

@@ -21,6 +21,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'profession',
+      type: 'string',
+      title: 'profession',
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
@@ -30,16 +35,9 @@ export default defineType({
     }),
     defineField({
       name: 'bio',
+      type: 'markdown',
       title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      placeholder: '## About me',
     }),
   ],
   preview: {

@@ -29,7 +29,7 @@ export const Status: React.FC<StatusProps> = ({ children, statusColor, className
             {...props}
         >
             <span className={cn(StatusVariants({ statusColor }))} />
-            <Typography as='p' className='max-w-fit' size='sm'>
+            <Typography as='p' className='max-w-fit'>
                 {children}
             </Typography>
         </div>

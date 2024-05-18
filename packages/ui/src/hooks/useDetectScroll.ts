@@ -23,6 +23,13 @@ export const useDetectScroll: UseDetectScrollType = ({ height }) => {
     }, [height]);
 
     useEffect(() => {
+        if (window.scrollY >= height) {
+            setCollide(true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps -- want to sure on first render only
+    }, []);
+
+    useEffect(() => {
         window.addEventListener('scroll', Scroll);
         return () => {
             window.removeEventListener('scroll', Scroll);

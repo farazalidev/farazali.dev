@@ -21,7 +21,7 @@ export const Hero: React.FC<HeroProps> = () => {
                 <div>
                     <Status className='md:hidden'>Available for work</Status>
 
-                    <Typography as='p' intent='ghost' size='lg'>
+                    <Typography as='p' intent='ghost'>
                         Full Stack Developer
                     </Typography>
                 </div>
@@ -29,10 +29,8 @@ export const Hero: React.FC<HeroProps> = () => {
                 <ProfileImage className='md:hidden' />
 
                 <div className='flex flex-col gap-3'>
-                    <Typography as='p' size='2xl'>
-                        I'am Faraz Ali
-                    </Typography>
-                    <Typography as='p' intent='ghost' size='md'>
+                    <Typography as='p'>I'am Faraz Ali</Typography>
+                    <Typography as='p' intent='ghost'>
                         I speak the languages of the web. Fluently.
                     </Typography>
 

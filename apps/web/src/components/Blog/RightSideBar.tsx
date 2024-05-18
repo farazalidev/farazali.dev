@@ -1,3 +1,4 @@
+'use client';
 import { Status, Typography } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
@@ -5,6 +6,7 @@ import React from 'react';
 import { FaEye } from 'react-icons/fa';
 import { LuTrendingUp } from 'react-icons/lu';
 import Image from 'next/image';
+import { useDetectScroll } from '@repo/ui/hooks';
 import { postsData, type Post } from '../RecentPosts/dummyPosts.data';
 import type { PostTag } from './Tags.data';
 import { tagsData } from './Tags.data';
@@ -12,19 +14,21 @@ import { tagsData } from './Tags.data';
 interface RightSideBarProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const RightSideBar: React.FC<RightSideBarProps> = ({ className, ...props }) => {
+    const { collide } = useDetectScroll({ height: 100 });
+
     return (
-        <aside className={cn('rounded-xl', className)} {...props}>
+        <aside className={cn('rounded-xl', className, collide ? 'xl:sticky xl:top-0 xl:right-0' : '')} {...props}>
             <div className='h-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-2'>
                 <div className='common_section rounded-t-xl h-full'>
                     <Status>About Me</Status>
                     <div className='flex place-items-center justify-center lg:flex-col'>
                         <div className='flex flex-col gap-2 text-nowrap'>
                             <Image alt='profile' className='rounded-full' height={100} src='/profile.jpg' width={100} />
-                            <Typography as='p' intent='ghost-xl' size='sm'>
+                            <Typography as='p' intent='ghost-xl'>
                                 Full Stack Dev
                             </Typography>
                         </div>
-                        <Typography as='p' className='mt-3 text-balance text-center' intent='ghost' size='sm'>
+                        <Typography as='p' className='mt-3 text-balance text-center' intent='ghost'>
                             Full Stack Developer proficient in crafting seamless web applications from design to deployment. Skilled in
                             React.js, Node.js, and dedicated to problem-solving.
                         </Typography>
@@ -61,9 +65,7 @@ export const TrendingPostCard: React.FC<TrendingPostCardProps> = ({ post, ...pro
     return (
         <div {...props}>
             <div className='flex place-items-center justify-between'>
-                <Typography as='span' size='md'>
-                    27 May 2024
-                </Typography>
+                <Typography as='span'>27 May 2024</Typography>
                 <div className='flex place-items-center gap-2'>
                     <Typography as='p' className='flex place-items-center gap-2'>
                         <FaEye />
@@ -75,10 +77,10 @@ export const TrendingPostCard: React.FC<TrendingPostCardProps> = ({ post, ...pro
                     </Typography>
                 </div>
             </div>
-            <Typography as='h2' className='text-primary line-clamp-1' intent='ghost' size='md'>
+            <Typography as='h2' className='text-primary line-clamp-1' intent='ghost'>
                 {post.title}
             </Typography>
-            <Typography as='h2' className='line-clamp-3' intent='ghost-xl' size='sm'>
+            <Typography as='h2' className='line-clamp-3' intent='ghost-xl'>
                 {post.body}
             </Typography>
         </div>
@@ -98,10 +100,8 @@ export const Tag: React.FC<TagProps> = ({ tag, className, ...props }) => {
             )}
             {...props}
         >
-            <Typography as='span' size='sm'>
-                {tag.topic.length < 8 ? tag.topic : `${tag.topic.slice(0, 7)}...`}
-            </Typography>
-            <Typography as='span' intent='ghost' size='sm'>
+            <Typography as='span'>{tag.topic.length < 8 ? tag.topic : `${tag.topic.slice(0, 7)}...`}</Typography>
+            <Typography as='span' intent='ghost'>
                 {tag.totalPosts}
             </Typography>
         </div>
