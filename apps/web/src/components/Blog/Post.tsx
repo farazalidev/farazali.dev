@@ -8,6 +8,7 @@ import type { Article } from '../../lib/sanity/article';
 import { GetTOC } from '../../utils/GetToc';
 import { MarkdownHeading } from './MarkdownHeading';
 import { Toc } from './Toc';
+import { Comments } from './Comments';
 
 interface PostProps extends HTMLAttributes<HTMLDivElement> {
     article: Article;
@@ -93,6 +94,7 @@ export const Post: React.FC<PostProps> = ({ className, ...props }) => {
                     {props.article.md}
                 </Markdown>
             </div>
+            <Comments />
         </div>
     );
 };

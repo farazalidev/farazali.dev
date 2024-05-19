@@ -4,12 +4,18 @@ import { Post } from '@components';
 import type { Article } from '../../../../lib/sanity/article';
 import { client } from '../../../../lib/sanity/client';
 import { BlogPostSideBar } from '../../../../components/Blog/BlogPostSideBar';
+import type { SanityRecentPost } from '../../../../lib/sanity/interface';
 
 interface PageProps {
     params: {
         slug: string;
     };
     searchParams: Record<string, string | string[] | undefined>;
+}
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+    const posts: SanityRecentPost[] = await client.fetch(groq`*[_type=="post"]`);
+    return posts.map(({ slug }) => ({ slug: slug.current }));
 }
 
 export default async function Page({ params }: PageProps): Promise<React.JSX.Element> {
