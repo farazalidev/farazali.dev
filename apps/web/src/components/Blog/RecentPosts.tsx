@@ -1,4 +1,4 @@
-import { Status } from '@repo/ui/components';
+import { Title } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
@@ -32,7 +32,7 @@ export const RecentPosts: React.FC<BlogPostsProps> = async ({ className }) => {
 
     return (
         <div className={cn('common_section rounded-xl w-full h-full py-2', className)}>
-            <Status>Recent Posts</Status>
+            <Title>Recent Posts</Title>
             <div className='flex flex-col gap-7'>
                 {result.map((post) => {
                     return <RecentPostCard key={post.title} post={post} />;

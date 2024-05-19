@@ -19,7 +19,7 @@ const StatusVariants = cva('rounded-full h-1 w-1', {
     },
 });
 
-export const Status: React.FC<StatusProps> = ({ children, statusColor, className, ...props }) => {
+export const Title: React.FC<StatusProps> = ({ children, statusColor, className, ...props }) => {
     return (
         <div
             className={cn(
@@ -29,7 +29,7 @@ export const Status: React.FC<StatusProps> = ({ children, statusColor, className
             {...props}
         >
             <span className={cn(StatusVariants({ statusColor }))} />
-            <Typography as='p' className='max-w-fit'>
+            <Typography as='span' className='max-w-fit'>
                 {children}
             </Typography>
         </div>

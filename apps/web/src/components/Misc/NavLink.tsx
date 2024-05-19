@@ -16,7 +16,10 @@ export const NavLink: React.FC<NavLinkProps> = ({ children, href }) => {
 
     return (
         <Link
-            className={cn('text-primary-text hover:text-primary transition-colors duration-200 mr-3', active ? 'underline' : '')}
+            className={cn(
+                'text-primary-text hover:text-primary transition-colors duration-200 mr-3',
+                active ? 'underline text-primary' : '',
+            )}
             href={href}
         >
             {children}

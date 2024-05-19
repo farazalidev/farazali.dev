@@ -1,4 +1,4 @@
-import { Status, Typography } from '@repo/ui/components';
+import { Title, Typography } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
@@ -29,7 +29,7 @@ export const MainPageRecentPosts: React.FC<RecentPostsProps> = async ({ classNam
 
     return (
         <div className={cn('common_section rounded-xl text-primary-text', className)} {...props}>
-            <Status>Recent Posts</Status>
+            <Title>Recent Posts</Title>
             <div className='flex flex-col gap-3'>
                 {result.slice(0, 3).map((post) => {
                     return <PostCard key={post.title} post={post} />;

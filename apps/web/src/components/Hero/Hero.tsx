@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities -- i want to use quote */
-import { Button, Status, Typography } from '@repo/ui/components';
+import { Button, Title, Typography } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import Image from 'next/image';
 import type { HTMLAttributes } from 'react';
@@ -19,7 +19,7 @@ export const Hero: React.FC<HeroProps> = () => {
         >
             <div className='flex flex-col justify-center gap-10'>
                 <div>
-                    <Status className='md:hidden'>Available for work</Status>
+                    <Title className='md:hidden'>Available for work</Title>
 
                     <Typography as='p' intent='ghost'>
                         Full Stack Developer
@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = () => {
             </div>
 
             <div className='flex-col justify-center hidden md:block'>
-                <Status>Available</Status>
+                <Title>Available</Title>
                 <ProfileImage />
             </div>
         </section>

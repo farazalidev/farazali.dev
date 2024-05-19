@@ -1,4 +1,4 @@
-import { Status, Typography } from '@repo/ui/components';
+import { Title, Typography } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
@@ -20,7 +20,7 @@ export const BlogPostSideBar: React.FC<BlogPostSideBarProps> = ({ className, ...
         <Fixed as='aside' className={cn('rounded-xl', className)} {...props}>
             <div className='h-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-2'>
                 <div className='common_section rounded-t-xl h-full'>
-                    <Status>About Me</Status>
+                    <Title>About Me</Title>
                     <div className='flex place-items-center justify-center lg:flex-col'>
                         <div className='flex flex-col gap-2 text-nowrap'>
                             <Image
@@ -44,11 +44,11 @@ export const BlogPostSideBar: React.FC<BlogPostSideBarProps> = ({ className, ...
                     </div>
                 </div>
                 <div className='common_section h-full'>
-                    <Status>Table of Content</Status>
+                    <Title>Table of Content</Title>
                     <Toc tokens={GetTOC(props.article?.md)} />
                 </div>
                 <div className='common_section rounded-b-xl h-full'>
-                    <Status>Tags</Status>
+                    <Title>Tags</Title>
                     <div className='flex flex-wrap gap-3 mt-3'>
                         {tagsData.slice(0, 15).map((tag) => {
                             return <Tag key={tag.topic} tag={tag} />;

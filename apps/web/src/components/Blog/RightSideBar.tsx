@@ -1,26 +1,23 @@
-'use client';
-import { Status, Typography } from '@repo/ui/components';
+import { Title, Typography } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
 import { FaEye } from 'react-icons/fa';
 import { LuTrendingUp } from 'react-icons/lu';
 import Image from 'next/image';
-import { useDetectScroll } from '@repo/ui/hooks';
 import { postsData, type Post } from '../RecentPosts/dummyPosts.data';
+import { Fixed } from '../../utils/Fixed';
 import type { PostTag } from './Tags.data';
 import { tagsData } from './Tags.data';
 
 interface RightSideBarProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const RightSideBar: React.FC<RightSideBarProps> = ({ className, ...props }) => {
-    const { collide } = useDetectScroll({ height: 100 });
-
     return (
-        <aside className={cn('rounded-xl', className, collide ? 'xl:sticky xl:top-0 xl:right-0' : '')} {...props}>
+        <Fixed as='aside' className={cn('rounded-xl', className)} {...props}>
             <div className='h-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-2'>
                 <div className='common_section rounded-t-xl h-full'>
-                    <Status>About Me</Status>
+                    <Title>About Me</Title>
                     <div className='flex place-items-center justify-center lg:flex-col'>
                         <div className='flex flex-col gap-2 text-nowrap'>
                             <Image alt='profile' className='rounded-full' height={100} src='/profile.jpg' width={100} />
@@ -36,7 +33,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({ className, ...props 
                 </div>
 
                 <div className='common_section h-full'>
-                    <Status>Trending Posts</Status>
+                    <Title>Trending Posts</Title>
                     <div className='gap-4 h-full flex flex-col mt-3'>
                         {postsData.slice(0, 2).map((post) => {
                             return <TrendingPostCard key={post.title} post={post} />;
@@ -45,7 +42,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({ className, ...props 
                 </div>
 
                 <div className='common_section rounded-b-xl h-full'>
-                    <Status>Tags</Status>
+                    <Title>Tags</Title>
                     <div className='flex flex-wrap gap-3 mt-3'>
                         {tagsData.slice(0, 15).map((tag) => {
                             return <Tag key={tag.topic} tag={tag} />;
@@ -53,7 +50,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({ className, ...props 
                     </div>
                 </div>
             </div>
-        </aside>
+        </Fixed>
     );
 };
 

@@ -39,8 +39,8 @@ export default async function Page({ params }: PageProps): Promise<React.JSX.Ele
 
     return (
         <div className='grid grid-cols-12 gap-4'>
-            <Post article={article[0]} className='col-span-8' />
-            <BlogPostSideBar article={article[0]} className='col-span-4 h-fit' />
+            <Post article={article[0]} className='col-span-12 xl:col-span-8' />
+            <BlogPostSideBar article={article[0]} className='hidden xl:flex xl:col-span-4 h-fit' />
         </div>
     );
 }

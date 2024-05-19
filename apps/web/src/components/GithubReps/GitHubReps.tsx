@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access -- unknown API schema */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment -- unknown API schema*/
 'use client';
-import { Status, Typography } from '@repo/ui/components';
+import { Title, Typography } from '@repo/ui/components';
 import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
@@ -43,7 +43,7 @@ export const GitHubReps: React.FC<GitHubRepsProps> = () => {
 
     return (
         <div className='common_section min-h-fit rounded-xl'>
-            <Status>Recent Github repos</Status>
+            <Title>Recent Github repos</Title>
             <div className='flex flex-col gap-3 justify-center mt-4'>
                 {fetchState.data.slice(0, 4).map((repo) => {
                     return <Repo createdAt={repo?.created_at} key={repo.name} name={repo?.name} starsCount={repo?.stargazers_count} />;
