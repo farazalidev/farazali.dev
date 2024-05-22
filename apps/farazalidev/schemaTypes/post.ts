@@ -21,7 +21,10 @@ export default defineType({
         source: 'title',
         maxLength: 96,
         slugify: (source) => {
-          return `${source.toLowerCase().replace(/ /g, '-')}-${nanoid(5)}`
+          return `${source
+            .toLowerCase()
+            .replace(/[^a-zA-Z0-9 ]/g, '')
+            .replace(/ /g, '-')}-${nanoid(5).replace(/[^a-zA-Z0-9 ]/g, 'k')}`
         },
       },
     }),

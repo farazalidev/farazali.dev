@@ -15,7 +15,7 @@ export const RecentPostCard: React.FC<RecentPostCardProps> = ({ post, className,
             <article className={cn('flex gap-3 justify-center overflow-hidden', className)} {...props}>
                 <div className='flex flex-col gap-1 place-items-center'>
                     <Typography as='span' className='text-white uppercase' weight='bold'>
-                        {new Date(post?._createdAt || '').getDay()}
+                        {new Date(post?._createdAt || '').getDate()}
                     </Typography>
                     <Typography as='span' className='text-white uppercase' weight='bold'>
                         {new Date(post?._createdAt || '').toLocaleDateString('default', { month: 'long' })}

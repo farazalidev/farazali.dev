@@ -113,6 +113,7 @@ export interface Category {
     _type: string;
     _updatedAt: string;
     title: string;
+    count?: number;
 }
 
 export interface Article {

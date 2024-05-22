@@ -5,14 +5,28 @@ import React from 'react';
 import { FaEye } from 'react-icons/fa';
 import { LuTrendingUp } from 'react-icons/lu';
 import Image from 'next/image';
+import groq from 'groq';
 import { postsData, type Post } from '../RecentPosts/dummyPosts.data';
 import { Fixed } from '../../utils/Fixed';
-import type { PostTag } from './Tags.data';
-import { tagsData } from './Tags.data';
+import type { Category } from '../../lib/sanity/article';
+import { client } from '../../lib/sanity/client';
+import { CategoryTag } from './CategoryTag';
 
 interface RightSideBarProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const RightSideBar: React.FC<RightSideBarProps> = ({ className, ...props }) => {
+export const RightSideBar: React.FC<RightSideBarProps> = async ({ className, ...props }) => {
+    const fetchAllTags = async (): Promise<Category[]> => {
+        const tagsResponse: Category[] = await client.fetch(groq`
+        *[_type == "category"] {
+        ...,
+        "count": count(*[_type == "post" && references(^._id)])
+        } | order(count desc) [0...10]
+        `);
+        return tagsResponse;
+    };
+
+    const tags = await fetchAllTags();
+
     return (
         <Fixed as='aside' className={cn('rounded-xl', className)} {...props}>
             <div className='h-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-2'>
@@ -44,8 +58,8 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({ className, ...props 
                 <div className='common_section rounded-b-xl h-full'>
                     <Title>Tags</Title>
                     <div className='flex flex-wrap gap-3 mt-3'>
-                        {tagsData.slice(0, 15).map((tag) => {
-                            return <Tag key={tag.topic} tag={tag} />;
+                        {tags.slice(0, 15).map((tag) => {
+                            return <CategoryTag key={tag.title} tag={tag} />;
                         })}
                     </div>
                 </div>
@@ -79,27 +93,6 @@ export const TrendingPostCard: React.FC<TrendingPostCardProps> = ({ post, ...pro
             </Typography>
             <Typography as='h2' className='line-clamp-3' intent='ghost-xl'>
                 {post.body}
-            </Typography>
-        </div>
-    );
-};
-
-interface TagProps extends HTMLAttributes<HTMLDivElement> {
-    tag: PostTag;
-}
-
-export const Tag: React.FC<TagProps> = ({ tag, className, ...props }) => {
-    return (
-        <div
-            className={cn(
-                'border-[1px] hover:bg-primary hover:text-primary-text cursor-pointer border-primary rounded-full px-2 py-1 gap-2 w-fit flex place-items-center',
-                className,
-            )}
-            {...props}
-        >
-            <Typography as='span'>{tag.topic.length < 8 ? tag.topic : `${tag.topic.slice(0, 7)}...`}</Typography>
-            <Typography as='span' intent='ghost'>
-                {tag.totalPosts}
             </Typography>
         </div>
     );

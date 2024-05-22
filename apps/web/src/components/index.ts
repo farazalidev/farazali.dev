@@ -12,3 +12,4 @@ export * from './Blog/RightSideBar.tsx';
 export * from './Header/AdminHeader.tsx';
 export * from './Blog/Post.tsx';
 export * from './Misc/NavLink.tsx';
+export * from './Blog/CategoryTag.tsx';

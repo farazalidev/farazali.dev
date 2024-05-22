@@ -4,18 +4,31 @@ import type { HTMLAttributes } from 'react';
 import React from 'react';
 import Image from 'next/image';
 import Markdown from 'markdown-to-jsx';
-import type { Article } from '../../lib/sanity/article';
+import groq from 'groq';
+import { CategoryTag } from '@components';
+import type { Article, Category } from '../../lib/sanity/article';
 import { Fixed } from '../../utils/Fixed';
 import { GetTOC } from '../../utils/GetToc';
-import { Tag } from './RightSideBar';
-import { tagsData } from './Tags.data';
+import { client } from '../../lib/sanity/client';
 import { Toc } from './Toc';
 
 interface BlogPostSideBarProps extends HTMLAttributes<HTMLDivElement> {
     article: Article | undefined;
 }
 
-export const BlogPostSideBar: React.FC<BlogPostSideBarProps> = ({ className, ...props }) => {
+export const BlogPostSideBar: React.FC<BlogPostSideBarProps> = async ({ className, ...props }) => {
+    const fetchAllTags = async (): Promise<Category[]> => {
+        const tagsResponse: Category[] = await client.fetch(groq`
+        *[_type == "category"] {
+        ...,
+        "count": count(*[_type == "post" && references(^._id)])
+        } | order(count desc) [0...10]
+        `);
+        return tagsResponse;
+    };
+
+    const tags = await fetchAllTags();
+
     return (
         <Fixed as='aside' className={cn('rounded-xl', className)} {...props}>
             <div className='h-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-2'>
@@ -48,10 +61,10 @@ export const BlogPostSideBar: React.FC<BlogPostSideBarProps> = ({ className, ...
                     <Toc tokens={GetTOC(props.article?.md)} />
                 </div>
                 <div className='common_section rounded-b-xl h-full'>
-                    <Title>Tags</Title>
+                    <Title>Categories</Title>
                     <div className='flex flex-wrap gap-3 mt-3'>
-                        {tagsData.slice(0, 15).map((tag) => {
-                            return <Tag key={tag.topic} tag={tag} />;
+                        {tags.slice(0, 15).map((tag) => {
+                            return <CategoryTag key={tag.title} suppressHydrationWarning tag={tag} />;
                         })}
                     </div>
                 </div>
