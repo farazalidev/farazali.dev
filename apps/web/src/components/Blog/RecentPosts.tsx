@@ -12,6 +12,7 @@ interface BlogPostsProps extends HTMLAttributes<HTMLDivElement> {}
 const fetchRecentPosts = async (): Promise<SanityRecentPost[]> => {
     const data: SanityRecentPost[] | undefined = await client.fetch(
         groq`*[_type=="post"] | order(_createdAt desc) {
+                _id,
                 title,
                 summary,
                 _createdAt,

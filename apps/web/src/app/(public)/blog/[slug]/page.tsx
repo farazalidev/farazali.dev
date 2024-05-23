@@ -15,12 +15,13 @@ interface PageProps {
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
     const posts: SanityRecentPost[] = await client.fetch(groq`*[_type=="post"]`);
-    return posts.map(({ slug }) => ({ slug: slug.current }));
+    return posts.map(({ slug, _id }) => ({ slug: `${slug.current};${_id}` }));
 }
 
 export default async function Page({ params }: PageProps): Promise<React.JSX.Element> {
     const fetchPost = async (currentSlug: string): Promise<Article[]> => {
-        const response: Article[] = await client.fetch(groq`*[slug.current=="${currentSlug}" && _type=="post" ]{
+        const _id = decodeURIComponent(currentSlug).split(';')[1]?.slice(0, 36);
+        const response: Article[] = await client.fetch(groq`*[_id=="${_id}" && _type=="post" ]{
       title,
        author-> {
         name,

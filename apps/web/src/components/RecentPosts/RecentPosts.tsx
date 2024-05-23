@@ -12,6 +12,7 @@ interface RecentPostsProps extends HTMLAttributes<HTMLDivElement> {}
 export const MainPageRecentPosts: React.FC<RecentPostsProps> = async ({ className, ...props }) => {
     const fetchRecentPosts = async (): Promise<SanityRecentPost[]> => {
         const data: SanityRecentPost[] | undefined = await client.fetch(groq`*[_type=="post"][0...3] | order(_createdAt desc) {
+                _id,
                 title,
                 summary,
                 _createdAt,
@@ -46,7 +47,7 @@ interface PostCardProps {
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
     return (
         <section className='flex flex-col gap-2 min-h-fit'>
-            <Link href={`blog/${post?.slug.current}`}>
+            <Link href={`blog/${post?.slug.current};${post?._id}`}>
                 <Typography as='h2' className='line-clamp-1 text-primary'>
                     {post?.title}
                 </Typography>

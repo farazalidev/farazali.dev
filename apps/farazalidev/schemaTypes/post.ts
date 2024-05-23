@@ -1,7 +1,14 @@
 /* eslint-disable import/no-default-export -- unknown*/
 /* eslint-disable @typescript-eslint/no-unsafe-assignment -- unknown */
+import type {SlugifierFn} from 'sanity'
 import {defineField, defineType} from 'sanity'
-import {nanoid} from 'nanoid'
+import {slugify} from '../utils/slugify'
+
+const slugifyFn: SlugifierFn = (input) => {
+  const slug = slugify(input)
+  const currentid = document.location.href.split(';')[1].slice(0, 36)
+  return `${slug};${currentid}`
+}
 
 export default defineType({
   name: 'post',
@@ -20,12 +27,7 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
-        slugify: (source) => {
-          return `${source
-            .toLowerCase()
-            .replace(/[^a-zA-Z0-9 ]/g, '')
-            .replace(/ /g, '-')}-${nanoid(5).replace(/[^a-zA-Z0-9 ]/g, 'k')}`
-        },
+        slugify: slugifyFn,
       },
     }),
     defineField({

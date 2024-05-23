@@ -10,6 +10,7 @@ export interface SanityPostSlug {
 }
 
 export interface SanityRecentPost {
+    _id: string;
     title: string;
     summary: string;
     author: SanityPostAuthor;

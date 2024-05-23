@@ -11,7 +11,7 @@ interface RecentPostCardProps extends HTMLAttributes<HTMLDivElement> {
 
 export const RecentPostCard: React.FC<RecentPostCardProps> = ({ post, className, ...props }) => {
     return (
-        <Link href={`blog/${encodeURIComponent(post?.slug.current || '')}`}>
+        <Link href={`blog/${encodeURIComponent(post?.slug.current || '')};${post?._id}`}>
             <article className={cn('flex gap-3 justify-center overflow-hidden', className)} {...props}>
                 <div className='flex flex-col gap-1 place-items-center'>
                     <Typography as='span' className='text-white uppercase' weight='bold'>
