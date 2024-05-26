@@ -1,7 +1,13 @@
 import type { ReactNode } from 'react';
 import React from 'react';
+import type { Metadata } from 'next';
 import { Footer, Header } from '../../components';
 import CommonLayout from '../commonLayout';
+
+export const metadata: Metadata = {
+    title: 'Faraz Ali',
+    description: 'Personal Portfolio website for faraz ali dev',
+};
 
 export default function PublicLayout({ children }: { children: ReactNode }): ReactNode {
     return (

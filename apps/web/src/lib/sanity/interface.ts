@@ -17,4 +17,5 @@ export interface SanityRecentPost {
     slug: SanityPostSlug;
     _createdAt: string;
     categories: SanityPostCategory[];
+    _updatedAt: string;
 }

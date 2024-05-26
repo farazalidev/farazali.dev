@@ -118,7 +118,8 @@ export interface Category {
 
 export interface Article {
     author: Author;
-    categories: Category[];
+    summary: string;
+    categories?: Category[];
     mainImage: ImageAsset;
     publishedAt: string;
     title: string;

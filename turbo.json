@@ -1,7 +1,7 @@
 {
     "$schema": "https://turbo.build/schema.json",
     "globalDependencies": ["**/.env.*local"],
-    "globalEnv": ["GITHUB_TOKEN", "GOOGLE_APPLICATION_CREDENTIALS", "GTAG", "NODE_ENV"],
+    "globalEnv": ["GITHUB_TOKEN", "NEXT_PUBLIC_GOOGLE_APPLICATION_CREDENTIALS", "GTAG", "NODE_ENV", "NEXT_PUBLIC_DOMAIN"],
     "pipeline": {
         "build": {
             "dependsOn": ["^build"],

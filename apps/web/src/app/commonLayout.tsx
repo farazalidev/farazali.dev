@@ -1,7 +1,6 @@
 /* eslint-disable react/self-closing-comp -- added google analytics scripts*/
 import './globals.css';
 import '@repo/ui/styles.css';
-import type { Metadata } from 'next';
 import LocalFont from 'next/font/local';
 import { cn } from '@repo/ui/utils';
 import Script from 'next/script';
@@ -21,11 +20,6 @@ const Poppins = LocalFont({
         { path: '../../public/fonts/poppins/Poppins-ExtraBold.ttf', weight: '900' },
     ],
 });
-
-export const metadata: Metadata = {
-    title: 'farazali.dev',
-    description: 'farazali portfolio',
-};
 
 interface CommonLayoutProps extends HTMLAttributes<HTMLBodyElement> {}
 

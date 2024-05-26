@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { cache } from 'react';
 import groq from 'groq';
+import type { Metadata } from 'next';
 import { Post } from '@components';
 import type { Article } from '../../../../lib/sanity/article';
 import { client } from '../../../../lib/sanity/client';
@@ -13,35 +14,60 @@ interface PageProps {
     searchParams: Record<string, string | string[] | undefined>;
 }
 
+const fetchPost = cache(async (currentSlug: string) => {
+    const _id = decodeURIComponent(currentSlug).split(';')[1]?.slice(0, 36);
+    const response: Article[] = await client.fetch(
+        groq`*[_id=="${_id}" && _type=="post" ]{
+            title,
+                author-> {
+                    name,
+                    image {
+                    asset->
+                          },
+                    bio,
+                    profession
+                },
+                summary,
+                mainImage {
+                    asset->
+                    },
+                slug->,
+                md,
+                publishedAt,
+                categories[]->
+    }`,
+        { _id },
+        { cache: 'force-cache' },
+    );
+
+    return response;
+});
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    const response = await fetchPost(decodeURIComponent(params.slug));
+
+    return {
+        title: response[0]?.title,
+        description: response[0]?.summary,
+        authors: [{ name: response[0]?.author.name }],
+        category: response[0]?.categories?.[0]?.title,
+        openGraph: {
+            images: [
+                {
+                    url: response[0].mainImage.url,
+                },
+            ],
+        },
+        keywords: [...(response[0].categories?.map((cat) => cat.title) || [])],
+    };
+}
+
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
     const posts: SanityRecentPost[] = await client.fetch(groq`*[_type=="post"]`);
     return posts.map(({ slug, _id }) => ({ slug: `${slug.current};${_id}` }));
 }
 
 export default async function Page({ params }: PageProps): Promise<React.JSX.Element> {
-    const fetchPost = async (currentSlug: string): Promise<Article[]> => {
-        const _id = decodeURIComponent(currentSlug).split(';')[1]?.slice(0, 36);
-        const response: Article[] = await client.fetch(groq`*[_id=="${_id}" && _type=="post" ]{
-      title,
-       author-> {
-        name,
-        image {
-        asset->
-          },
-        bio,
-        profession
-      },
-      mainImage {
-        asset->},
-      slug->,
-      md,
-      publishedAt,
-      categories[]->
-    } `);
-
-        return response;
-    };
-
     const article = await fetchPost(decodeURIComponent(params.slug));
 
     return (
