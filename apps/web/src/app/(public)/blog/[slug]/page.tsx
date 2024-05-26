@@ -1,4 +1,4 @@
-import React, { cache } from 'react';
+import React from 'react';
 import groq from 'groq';
 import type { Metadata } from 'next';
 import { Post } from '@components';
@@ -14,7 +14,7 @@ interface PageProps {
     searchParams: Record<string, string | string[] | undefined>;
 }
 
-const fetchPost = cache(async (currentSlug: string) => {
+const fetchPost = async (currentSlug: string) => {
     const _id = decodeURIComponent(currentSlug).split(';')[1]?.slice(0, 36);
     const response: Article[] = await client.fetch(
         groq`*[_id=="${_id}" && _type=="post" ]{
@@ -41,7 +41,7 @@ const fetchPost = cache(async (currentSlug: string) => {
     );
 
     return response;
-});
+};
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const response = await fetchPost(decodeURIComponent(params.slug));
