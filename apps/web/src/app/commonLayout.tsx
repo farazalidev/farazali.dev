@@ -32,6 +32,7 @@ interface CommonLayoutProps extends HTMLAttributes<HTMLBodyElement> {}
 export default function CommonLayout({ children, className, ...props }: CommonLayoutProps): JSX.Element {
     return (
         <html lang='en'>
+            <meta content='ufh7qXb8UNlyYJ43qBcYsHYMRVSe_H5_qvYyTvJy3zU' name='google-site-verification' />
             <head>
                 <Script async src='https://www.googletagmanager.com/gtag/js?id=G-NEJDNP6XCW'></Script>
                 <Script id=''>
