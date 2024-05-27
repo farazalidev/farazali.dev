@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         openGraph: {
             images: [
                 {
-                    url: response[0].mainImage.url,
+                    url: response[0].mainImage.asset.url,
                 },
             ],
         },
