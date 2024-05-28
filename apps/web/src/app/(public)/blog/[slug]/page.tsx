@@ -57,8 +57,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
                     url: response[0].mainImage.asset.url,
                 },
             ],
+            type: 'article',
         },
         keywords: [...(response[0].categories?.map((cat) => cat.title) || [])],
+        robots: 'index, follow',
     };
 }
 
