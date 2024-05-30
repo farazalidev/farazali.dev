@@ -28,6 +28,7 @@ export default function CommonLayout({ children, className, ...props }: CommonLa
         <html lang='en'>
             <meta content='ufh7qXb8UNlyYJ43qBcYsHYMRVSe_H5_qvYyTvJy3zU' name='google-site-verification' />
             <head>
+                <meta content='3D7A2B994E605A227CE245DBF806CF3F' name='msvalidate.01' />
                 <Script async src='https://www.googletagmanager.com/gtag/js?id=G-NEJDNP6XCW'></Script>
                 <Script id=''>
                     {` window.dataLayer = window.dataLayer || [];
