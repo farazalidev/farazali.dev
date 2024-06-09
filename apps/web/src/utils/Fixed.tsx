@@ -12,7 +12,7 @@ export const Fixed: React.FC<FixedProps> = ({ className, children, ...props }) =
     const { collide } = useDetectScroll({ height: 100 });
 
     return (
-        <props.as className={cn(className, collide ? 'xl:sticky xl:top-1 xl:right-0' : '')} {...props}>
+        <props.as className={cn(className, collide ? 'md:sticky md:top-1 md:right-0' : '')} {...props}>
             {children}
         </props.as>
     );

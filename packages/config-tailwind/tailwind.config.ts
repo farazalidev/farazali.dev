@@ -9,7 +9,7 @@ export const config: Config = {
             colors: {
                 'main-bg': '#161616',
                 secondary_bg: '#1b1b1b',
-                primary: '#F35034',
+                primary: '#228B22',
                 secondary: '#161616',
                 'secondary-border': '#292626',
                 'primary-text': '#FDFDFD',

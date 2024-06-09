@@ -14,7 +14,7 @@ interface PageProps {
     searchParams: Record<string, string | string[] | undefined>;
 }
 
-const fetchPost = async (currentSlug: string) => {
+const fetchPost = async (currentSlug: string): Promise<Article[]> => {
     const _id = decodeURIComponent(currentSlug).split(';')[1]?.slice(0, 36);
     const response: Article[] = await client.fetch(
         groq`*[_id=="${_id}" && _type=="post" ]{

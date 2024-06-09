@@ -41,6 +41,7 @@ export interface ImageAsset {
                 height: number;
                 width: number;
             };
+            lqip: string;
         };
     };
     extension: string;

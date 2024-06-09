@@ -8,6 +8,6 @@ interface FooterData {
 }
 
 export const footerData: FooterData[] = [
-    { label: 'LinkedIn', Icon: FaLinkedin, location: 'https://linkedin.com/in/farazalide' },
-    { label: 'GitHub', Icon: FaGithub, location: 'https://github.com/farazlidev' },
+    { label: 'LinkedIn', Icon: FaLinkedin, location: 'https://linkedin.com/in/farazalidev' },
+    { label: 'GitHub', Icon: FaGithub, location: 'https://github.com/farazalidev' },
 ];

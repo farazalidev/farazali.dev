@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment -- unknown API schema*/
 'use client';
 import { Title, Typography } from '@repo/ui/components';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
@@ -46,7 +47,15 @@ export const GitHubReps: React.FC<GitHubRepsProps> = () => {
             <Title>Recent Github repos</Title>
             <div className='flex flex-col gap-3 justify-center mt-4'>
                 {fetchState.data.slice(0, 4).map((repo) => {
-                    return <Repo createdAt={repo?.created_at} key={repo.name} name={repo?.name} starsCount={repo?.stargazers_count} />;
+                    return (
+                        <Repo
+                            createdAt={repo?.created_at}
+                            href={repo?.html_url}
+                            key={repo.name}
+                            name={repo?.name}
+                            starsCount={repo?.stargazers_count}
+                        />
+                    );
                 })}
             </div>
         </div>
@@ -57,11 +66,12 @@ interface RepoProps {
     name: string;
     createdAt: string;
     starsCount: number;
+    href: string;
 }
 
-export const Repo: React.FC<RepoProps> = ({ name, createdAt, starsCount }) => {
+export const Repo: React.FC<RepoProps> = ({ name, createdAt, starsCount, href }) => {
     return (
-        <div className='flex justify-between place-items-center px-4'>
+        <Link className='flex justify-between place-items-center px-4' href={href}>
             <div className='flex flex-col'>
                 <Typography as='p' className='hover:text-primary'>
                     {name}
@@ -76,6 +86,6 @@ export const Repo: React.FC<RepoProps> = ({ name, createdAt, starsCount }) => {
                 </Typography>
                 <FaStar className='text-primary-text' />
             </div>
-        </div>
+        </Link>
     );
 };

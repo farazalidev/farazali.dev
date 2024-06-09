@@ -26,11 +26,13 @@ export const Project: React.FC<ProjectProps> = ({ link, name, thumbnail, type, i
                             {type}
                         </Typography>
                     </Link>
-                    <FaExternalLinkAlt className='text-primary' size={20} />
+                    <Link href={link}>
+                        <FaExternalLinkAlt className='text-primary' size={20} />
+                    </Link>
                 </div>
 
                 <div className='h-[200px] relative rounded-2xl overflow-hidden border-[2px] border-secondary-border'>
-                    <Image alt='whatsapp clone' fill loading='lazy' objectFit='cover' src={thumbnail} />
+                    <Image alt='whatsapp clone' className='object-cover' fill loading='lazy' src={thumbnail} />
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@ import { Title } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import type { HTMLAttributes } from 'react';
 import Image from 'next/image';
+import { headers } from 'next/headers';
 import { skillsData, type SkillData } from './skills.data';
 
 interface SkillsProps extends HTMLAttributes<HTMLDivElement> {}
@@ -23,10 +24,25 @@ interface SkillIconProps extends HTMLAttributes<HTMLDivElement> {
     skillData: SkillData;
 }
 
-export const SkillIcon: React.FC<SkillIconProps> = ({ skillData, className, ...props }) => {
+export const SkillIcon: React.FC<SkillIconProps> = async ({ skillData, className, ...props }) => {
+    const headersGetter = headers();
+    const currentHost = headersGetter.get('x-host');
+
+    const imageBlur = await fetch(`${currentHost}${skillData.path}`).then(async (res) => {
+        return Buffer.from(await res.arrayBuffer()).toString('base64');
+    });
     return (
-        <div className={cn('relative h-[40px] w-[40px] md:h-[54px] md:w-[45px]', className)} {...props}>
-            <Image alt={skillData.name} fill loading='lazy' objectFit='contain' src={skillData.path} title={skillData.name} />
+        <div className={cn('relative h-[40px] w-[40px] md:h-[40px] ', className)} {...props}>
+            <Image
+                alt={skillData.name}
+                blurDataURL={`data:image/png;base64,${imageBlur}`}
+                fill
+                loading='lazy'
+                objectFit='contain'
+                placeholder='blur'
+                src={skillData.path}
+                title={skillData.name}
+            />
         </div>
     );
 };

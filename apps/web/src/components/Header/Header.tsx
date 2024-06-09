@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import React from 'react';
 import { cn } from '@repo/ui/utils';
-import { IoIosMenu } from 'react-icons/io';
+// import { IoIosMenu } from 'react-icons/io';
 import { NavLink } from '../Misc/NavLink';
+import { Logo } from '../Misc/Logo';
 import { headersData } from './headers.data';
 
 interface HeaderProps {}
@@ -17,14 +17,11 @@ export const Header: React.FC<HeaderProps> = () => {
                 'bg-secondary_bg',
             ])}
         >
-            <div className='flex justify-center place-items-center gap-4'>
-                <Image alt='logo' height={45} loading='lazy' src='/farazalidev_logo.svg' width={45} />
-                <h1 className='text-primary text-xl md:text-2xl font-bold'>Faraz Ali</h1>
-            </div>
+            <Logo />
 
             <nav className='flex justify-center place-items-center gap-4'>
                 {/* desktop menu */}
-                <div className='hidden md:block'>
+                <div>
                     {headersData.map((header) => {
                         return (
                             <NavLink href={header.location} key={header.label}>
@@ -36,9 +33,9 @@ export const Header: React.FC<HeaderProps> = () => {
 
                 {/* mobile menu */}
 
-                <div className='md:hidden'>
+                {/* <div className='md:hidden'>
                     <IoIosMenu className='text-primary-text' size={32} />
-                </div>
+                </div> */}
             </nav>
         </header>
     );

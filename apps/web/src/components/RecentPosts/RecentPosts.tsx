@@ -63,7 +63,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
             </Link>
             {post?.categories ? (
                 <div className='flex place-items-center gap-1'>
-                    {post.categories.slice(0, 3).map((tag) => {
+                    {post.categories.slice(0, 2).map((tag) => {
                         return (
                             <span
                                 className='border-[1px] border-primary rounded-full px-2 gap-2 w-fit hover:text-white hover:bg-primary'

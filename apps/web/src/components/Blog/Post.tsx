@@ -33,9 +33,11 @@ export const Post: React.FC<PostProps> = ({ className, ...props }) => {
 
             <Image
                 alt={props.article.title}
-                className='rounded-xl m-0'
+                blurDataURL={props.article.mainImage.asset.metadata.lqip}
+                className='rounded-xl m-0 max-h-[500p]'
                 height={500}
                 layout='responsive'
+                placeholder='blur'
                 sizes='(max-width: 768px) 100vw, (max-width: 800px) 50vw, 33vw'
                 src={props.article.mainImage.asset.url}
                 width={500}

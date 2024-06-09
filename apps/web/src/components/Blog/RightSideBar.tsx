@@ -30,7 +30,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = async ({ className, ...
     return (
         <Fixed as='aside' className={cn('rounded-xl', className)} {...props}>
             <div className='h-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-2'>
-                <div className='common_section rounded-t-xl h-full'>
+                <div className='common_section rounded-t-xl h-full hidden lg:inline-block'>
                     <Title>About Me</Title>
                     <div className='flex place-items-center justify-center lg:flex-col'>
                         <div className='flex flex-col gap-2 text-nowrap'>

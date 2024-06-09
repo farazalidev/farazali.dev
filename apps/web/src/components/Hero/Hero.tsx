@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities -- i want to use quote */
-import { Button, Title, Typography } from '@repo/ui/components';
+import { Title, Typography } from '@repo/ui/components';
 import { cn } from '@repo/ui/utils';
 import Image from 'next/image';
 import type { HTMLAttributes } from 'react';
 import React from 'react';
-import { IoCopyOutline } from 'react-icons/io5';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { EmailCopyButton } from '../Misc/EmailCopyButton';
+import { HireMeButton } from '../Misc/HireMeButton';
 
 interface HeroProps {}
 
@@ -19,7 +19,7 @@ export const Hero: React.FC<HeroProps> = () => {
         >
             <div className='flex flex-col justify-center gap-10'>
                 <div>
-                    <Title className='md:hidden'>Available for work</Title>
+                    <Title className='md:hidden'>Available</Title>
 
                     <Typography as='p' intent='ghost'>
                         Full Stack Developer
@@ -35,18 +35,13 @@ export const Hero: React.FC<HeroProps> = () => {
                     </Typography>
 
                     <div className='flex place-items-center gap-3'>
-                        <Button Icon={<AiOutlinePlus />} intent='primary'>
-                            Hire Me
-                        </Button>
-                        <Button Icon={<IoCopyOutline />} intent='secondary'>
-                            Copy Email
-                        </Button>
+                        <HireMeButton />
+                        <EmailCopyButton />
                     </div>
                 </div>
             </div>
 
             <div className='flex-col justify-center hidden md:block'>
-                <Title>Available</Title>
                 <ProfileImage />
             </div>
         </section>

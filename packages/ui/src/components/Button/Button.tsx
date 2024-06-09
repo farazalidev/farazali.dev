@@ -24,7 +24,7 @@ const buttonCVA = cva('flex text-primary-text text-sm md:text-lg py-1 text-nowra
 
 export const Button: React.FC<ButtonProps> = ({ children, intent = 'primary', size = 'medium', Icon, className, ...props }) => {
     return (
-        <button className={cn('flex rounded-md cursor-pointer border-[2px] border-white rounded-full')} type='button' {...props}>
+        <button className={cn('flex cursor-pointer border-[3px] border-white rounded-full')} type='button' {...props}>
             <div className='flex'>
                 <span className={cn(buttonCVA({ size, intent }), className, 'rounded-l-full')}>{children}</span>
                 {Icon ? (

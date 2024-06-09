@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { Typography } from '@repo/ui/components';
+import { Logo } from '../Misc/Logo';
 import { footerData } from './footerLinks.data';
 
 interface FooterProps {}
@@ -10,7 +10,7 @@ export const Footer: React.FC<FooterProps> = () => {
     return (
         <footer className='text-center'>
             <div className='common_section rounded-full h-fit text-primary-text flex justify-between mt-4'>
-                <Image alt='logo' height={35} loading='lazy' src='/farazalidev_logo.svg' width={35} />
+                <Logo />
                 <div className='flex place-items-center justify-between gap-2'>
                     {footerData.map((data, _i) => {
                         return (

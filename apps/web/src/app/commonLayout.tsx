@@ -4,6 +4,7 @@ import '@repo/ui/styles.css';
 import LocalFont from 'next/font/local';
 import { cn } from '@repo/ui/utils';
 import Script from 'next/script';
+import { Toaster } from 'sonner';
 import type { HTMLAttributes } from 'react';
 
 const Poppins = LocalFont({
@@ -39,6 +40,7 @@ export default function CommonLayout({ children, className, ...props }: CommonLa
             </head>
             <body className={cn(Poppins.className, 'bg-main-bg container mx-auto my-3 md:my-5 flex flex-col', className)} {...props}>
                 {children}
+                <Toaster />
             </body>
         </html>
     );

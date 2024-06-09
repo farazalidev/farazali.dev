@@ -4,7 +4,7 @@
             "mode": "auto"
         }
     ],
-    "cSpell.words": ["clsx", "extralight", "farazali", "farazalidev", "groq", "gtag"],
+    "cSpell.words": ["clsx", "extralight", "farazali", "farazalidev", "groq", "gtag", "lqip"],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
