@@ -53,7 +53,12 @@ interface ProfileImageProps extends HTMLAttributes<HTMLDivElement> {}
 export const ProfileImage: React.FC<ProfileImageProps> = ({ className, ...props }) => {
     return (
         <div className={cn('w-44 h-44 rounded-full border-secondary border-[3px] relative overflow-hidden', className)} {...props}>
-            <Image alt='Profile' fill loading='lazy' src='/profile.jpg' />
+            <Image
+                alt='Profile'
+                fill
+                loading='lazy'
+                src='https://github.com/farazalidev/farazali.dev/blob/main/apps/web/public/profile.jpg?raw=true'
+            />
         </div>
     );
 };
