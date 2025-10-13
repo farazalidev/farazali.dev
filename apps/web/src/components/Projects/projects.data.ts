@@ -7,15 +7,27 @@ interface ProjectData {
 
 export const projectsData: ProjectData[] = [
     {
-        name: 'Whatsapp Web Clone',
-        link: 'https://github.com/farazalidev/whatsapp-clone',
-        thumbnail: '/whatsapp-web-clone_screen_shot.png',
-        type: 'Web App',
+        name: 'UPrides (Ride Hailing Application)',
+        link: 'https://uprides.eu',
+        thumbnail: '/uprides-cover.jpg',
+        type: 'Mobile Apps (Node.js)',
     },
     {
-        name: 'E-commerce Back end',
+        name: 'Dex Remit (Money transfer)',
+        thumbnail: '/dex-remit.png',
+        type: 'Web App (React.js)',
+        link: 'https://dexremit.com',
+    },
+    {
+        name: 'Cricap (Sports News)',
+        link: 'https://web.cricap.com',
+        thumbnail: '/cricap.png',
+        type: 'Web App (Next.js)',
+    },
+    {
+        name: 'Whatsapp Web Clone (Personal)',
         link: 'https://github.com/farazalidev/whatsapp-clone',
-        thumbnail: '/ecommerce.jpeg',
-        type: 'Back End',
+        thumbnail: '/whatsapp-web-clone_screen_shot.png',
+        type: 'Web App (Next.js, Nest.js)',
     },
 ];

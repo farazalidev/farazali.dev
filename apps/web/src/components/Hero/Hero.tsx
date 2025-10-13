@@ -57,7 +57,8 @@ export const ProfileImage: React.FC<ProfileImageProps> = ({ className, ...props 
                 alt='Profile'
                 fill
                 loading='lazy'
-                src='https://github.com/farazalidev/farazali.dev/blob/main/apps/web/public/profile.jpg?raw=true'
+                src='https://raw.githubusercontent.com/farazalidev/farazali.dev/refs/heads/main/apps/web/public/profile.jpg'
+                className='bg-cover object-cover'
             />
         </div>
     );
