@@ -16,8 +16,8 @@ module.exports = {
             },
             {
                 protocol: 'https',
-                hostname: 'github.com',
-                pathname: '/farazalidev/farazali.dev/blob/main/apps/web/public/**',
+                hostname: 'raw.githubusercontent.com',
+                pathname: '/farazalidev/farazali.dev/refs/heads/main/apps/web/public/**',
             },
         ],
     },
